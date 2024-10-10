@@ -47,11 +47,8 @@ protected:
 	// called by EOSVoiceChatUser to fill the buffer, as long as these are samples available these should be consumed via OnGenerateAudio
 	void WriteSamples(TArrayView<int16> Samples)
 	{
-		if (bIsReadyToStream)
-		{
 			Audio::ArrayPcm16ToFloat(Samples, OutArrayView);
 			AudioBuffer.Push(OutArrayView.GetData(), Samples.Num());
-		}
 
 	}
 
